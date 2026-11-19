@@ -6,8 +6,13 @@
 var PHONE_TEXT = '[телефон — уточнить]';
 var PHONE_TEL = '+380000000000';
 
+// Страница всегда открывается сверху, а не на месте, где клиент остановился в прошлый раз.
+// Если в ссылке указан раздел (например, #order), оставляем как есть.
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+if (!location.hash) window.scrollTo(0, 0);
+
 (function () {
-  var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var mq =window.matchMedia('(prefers-reduced-motion: reduce)');
   var fine = window.matchMedia('(hover: hover) and (pointer: fine)');
   var wide = window.matchMedia('(min-width: 901px)');
 
