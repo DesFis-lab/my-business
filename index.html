@@ -208,11 +208,13 @@
       <form id="orderForm" novalidate>
         <div class="field">
           <label for="f-name">Ваше имя</label>
-          <input id="f-name" type="text" name="name" autocomplete="name" required>
+          <input id="f-name" type="text" name="name" autocomplete="name" required aria-describedby="e-name">
+          <p class="err" id="e-name" hidden></p>
         </div>
         <div class="field">
           <label for="f-phone">Телефон</label>
-          <input id="f-phone" type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+380" required pattern="[+\(\)0-9\s\-]{7,}" title="Номер телефона, например +380501234567">
+          <input id="f-phone" type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+380" required pattern="[+\(\)0-9\s\-]{7,}" title="Номер телефона, например +380501234567" aria-describedby="e-phone">
+          <p class="err" id="e-phone" hidden></p>
         </div>
         <div class="field">
           <label for="f-comment">Комментарий</label>

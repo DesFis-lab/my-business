@@ -95,9 +95,34 @@ var PHONE_TEL = '+380000000000';
     });
   }
 
+  // Ошибки показываем прямо под полем, а не только всплывающей подсказкой браузера.
+  function showError(input, msg) {
+    var p = document.getElementById(input.getAttribute('aria-describedby'));
+    if (!p) return;
+    p.textContent = msg;
+    p.hidden = !msg;
+    if (msg) input.setAttribute('aria-invalid', 'true'); else input.removeAttribute('aria-invalid');
+  }
+  function validate() {
+    var f = form.elements, first = null;
+    var nameMsg = f.name.value.trim() ? '' : 'Введите имя';
+    var phone = f.phone.value.trim();
+    var phoneMsg = '';
+    if (!phone) phoneMsg = 'Введите телефон';
+    else if (!f.phone.checkValidity()) phoneMsg = 'Введите номер, например +380501234567';
+    showError(f.name, nameMsg);
+    showError(f.phone, phoneMsg);
+    if (nameMsg) first = f.name; else if (phoneMsg) first = f.phone;
+    if (first) first.focus();
+    return !first;
+  }
+  form.addEventListener('input', function (e) {
+    if (e.target.getAttribute('aria-describedby')) showError(e.target, '');
+  });
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    if (!form.checkValidity()) { form.reportValidity(); return; }
+    if (!validate()) return;
 
     var f = form.elements;
     var text = 'Здравствуйте. Хочу получить расчёт.\nИмя: ' + f.name.value.trim() +

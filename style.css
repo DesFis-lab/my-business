@@ -196,6 +196,8 @@ input, textarea {
 }
 input::placeholder, textarea::placeholder { color: var(--dim); }
 input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.err { margin: 0; font-size: 15px; color: #FF9A8A; }
+input[aria-invalid="true"] { border-color: #FF9A8A; }
 textarea { min-height: 96px; resize: vertical; }
 form .btn { font-size: 20px; padding: 20px; }
 
