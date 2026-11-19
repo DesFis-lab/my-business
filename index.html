@@ -205,7 +205,7 @@
         </div>
         <div class="field">
           <label for="f-phone">Телефон</label>
-          <input id="f-phone" type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+380" required>
+          <input id="f-phone" type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+380" required pattern="[+\(\)0-9\s\-]{7,}" title="Номер телефона, например +380501234567">
         </div>
         <div class="field">
           <label for="f-comment">Комментарий</label>
@@ -214,10 +214,12 @@
         <button class="btn btn-accent" type="submit">Отправить</button>
       </form>
       <div class="done" id="orderDone" role="status" tabindex="-1" hidden>
-        <h3>Спасибо, заявка почти готова</h3>
-        <p>Отправку с сайта мы скоро подключим. А пока позвоните нам — сразу всё посчитаем.</p>
-        <div class="phone" data-phone-text>[телефон — уточнить]</div>
-        <a class="btn btn-accent" data-phone-link href="tel:+380000000000">Позвонить</a>
+        <h3>Осталось нажать «Отправить» в Telegram</h3>
+        <p>Мы открыли Telegram с готовой заявкой. Нажмите в нём «Отправить», и мы начнём считать. Если Telegram не открылся, нажмите кнопку ниже.</p>
+        <pre class="done-text" id="orderText"></pre>
+        <a class="btn btn-accent" id="orderTg" href="https://t.me/layerup_kyiv" target="_blank" rel="noopener">Открыть Telegram</a>
+        <a class="btn btn-ghost" id="orderMail" href="mailto:qwerty@gmail.com">Отправить по email</a>
+        <a class="btn btn-ghost" id="orderCall" href="tel:+380000000000" hidden>Позвонить</a>
         <button class="link-btn" type="button" id="orderBack">Изменить заявку</button>
       </div>
     </div>

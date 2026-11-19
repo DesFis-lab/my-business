@@ -49,7 +49,7 @@ There is no build, lint, or test command — this is intentionally a zero-toolin
 - Tone across the site is "лёгкий и внимательный, на «вы»" (light, attentive, formal "you") — per the brief. No bureaucratic/canned phrasing (канцелярит) and no exclamation marks.
 - No JS framework or build step. Styles live in `style.css`, behaviour in `script.js`. The only external dependency is Google Fonts.
 - All paths must be relative (`style.css`, `photo/…`, never `/style.css`): the site is served from `/my-business/`, not the domain root.
-- The order form doesn't send anything yet (planned for "Блок 9"). On submit it shows a message with the business phone and a «Позвонить» button. The phone is a placeholder: `PHONE_TEXT` / `PHONE_TEL` at the top of `script.js`.
+- The order form doesn't send to a server yet (planned for "Блок 9"). On submit it opens Telegram (`t.me/layerup_kyiv?text=…`) with the ready-made request text and shows a message with the same text plus «Открыть Telegram» / «Отправить по email» buttons. The «Позвонить» button and the tel: link in contacts appear only when a real number replaces the placeholder `PHONE_TEXT` / `PHONE_TEL` at the top of `script.js`.
 - Never modify, delete, or overwrite anything inside `images/` — it holds real business photos, not placeholders.
 - Prices change only together with `brief.md` (update both in sync) and only when the user explicitly asks — never change prices on your own initiative.
 

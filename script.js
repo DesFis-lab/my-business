@@ -1,6 +1,7 @@
 // Layer Up — поведение сайта: появление блоков, наклон карточек, параллакс, форма заявки.
 
-// Телефон бизнеса. ЗАМЕНИТЬ НА НАСТОЯЩИЙ, когда он будет:
+// Телефон бизнеса. Пока это заглушка: ЗАМЕНИТЬ НА НАСТОЯЩИЙ, когда он будет
+// (тогда в контактах и в сообщении после заявки появятся ссылки «Позвонить»):
 // PHONE_TEXT — как показать номер, PHONE_TEL — номер для ссылки tel: (только + и цифры).
 var PHONE_TEXT = '[телефон — уточнить]';
 var PHONE_TEL = '+380000000000';
@@ -58,18 +59,31 @@ var PHONE_TEL = '+380000000000';
     updateParallax();
   }
 
-  // Форма заявки. Отправку подключим позже (Блок 9),
-  // пока показываем сообщение с телефоном, чтобы клиент не потерялся.
+  // Форма заявки. Настоящую отправку на сервер подключим позже (Блок 9).
+  // Пока заявка уходит через Telegram: открываем чат с готовым текстом,
+  // клиенту остаётся нажать «Отправить». Запасные пути — email и (когда будет номер) звонок.
+  var TG_URL = 'https://t.me/layerup_kyiv';
+  var MAIL = 'qwerty@gmail.com';
+  var PHONE_PLACEHOLDER = '+380000000000';
+
   var form = document.getElementById('orderForm');
   var done = document.getElementById('orderDone');
   var back = document.getElementById('orderBack');
+  var tgLink = document.getElementById('orderTg');
+  var mailLink = document.getElementById('orderMail');
+  var callLink = document.getElementById('orderCall');
+  var textBox = document.getElementById('orderText');
 
-  done.querySelectorAll('[data-phone-text]').forEach(function (el) { el.textContent = PHONE_TEXT; });
-  done.querySelectorAll('[data-phone-link]').forEach(function (el) { el.href = 'tel:' + PHONE_TEL; });
+  // Кнопка «Позвонить» появляется только когда в начале файла указан настоящий номер.
+  if (PHONE_TEL !== PHONE_PLACEHOLDER) {
+    callLink.href = 'tel:' + PHONE_TEL;
+    callLink.textContent = 'Позвонить ' + PHONE_TEXT;
+    callLink.hidden = false;
+  }
 
   // Телефон в контактах становится ссылкой, которая на смартфоне сразу звонит,
   // как только в начале файла указан настоящий номер (вместо заглушки).
-  if (PHONE_TEL !== '+380000000000') {
+  if (PHONE_TEL !== PHONE_PLACEHOLDER) {
     document.querySelectorAll('[data-phone-contact]').forEach(function (el) {
       var a = document.createElement('a');
       a.href = 'tel:' + PHONE_TEL;
@@ -83,9 +97,23 @@ var PHONE_TEL = '+380000000000';
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     if (!form.checkValidity()) { form.reportValidity(); return; }
+
+    var f = form.elements;
+    var text = 'Здравствуйте. Хочу получить расчёт.\nИмя: ' + f.name.value.trim() +
+               '\nТелефон: ' + f.phone.value.trim();
+    var comment = f.comment.value.trim();
+    if (comment) text += '\nКомментарий: ' + comment;
+
+    var tgUrl = TG_URL + '?text=' + encodeURIComponent(text);
+    tgLink.href = tgUrl;
+    mailLink.href = 'mailto:' + MAIL + '?subject=' + encodeURIComponent('Расчёт стоимости') +
+                    '&body=' + encodeURIComponent(text);
+    textBox.textContent = text;
+
     form.hidden = true;
     done.hidden = false;
     done.focus();
+    window.open(tgUrl, '_blank', 'noopener');
   });
 
   back.addEventListener('click', function () {
