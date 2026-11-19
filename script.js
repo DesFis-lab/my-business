@@ -59,6 +59,19 @@ var PHONE_TEL = '+380000000000';
     updateParallax();
   }
 
+  // Закреплённая кнопка на телефоне прячется, когда на экране уже есть главная кнопка или форма.
+  var sticky = document.querySelector('.sticky');
+  if (sticky && 'IntersectionObserver' in window) {
+    var seen = new Set();
+    var so = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) seen.add(en.target); else seen.delete(en.target);
+      });
+      sticky.classList.toggle('off', seen.size > 0);
+    });
+    document.querySelectorAll('.hero-cta .btn, .after .btn, #order').forEach(function (el) { so.observe(el); });
+  }
+
   // Форма заявки. Настоящую отправку на сервер подключим позже (Блок 9).
   // Пока заявка уходит через Telegram: открываем чат с готовым текстом,
   // клиенту остаётся нажать «Отправить». Запасные пути — email и (когда будет номер) звонок.
