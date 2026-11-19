@@ -77,22 +77,45 @@ if (!location.hash) window.scrollTo(0, 0);
     document.querySelectorAll('.hero-cta .btn, #order').forEach(function (el) { so.observe(el); });
   }
 
-  // Просмотр фото работ: нажали на фото — открылось крупно; крестик, фон или Esc — закрыть.
+  // Просмотр фото работ: нажали на фото — открылось крупно. Листать: кнопки, стрелки клавиатуры
+  // или свайп. Закрыть: крестик, тёмный фон или Esc.
   var lb = document.getElementById('lightbox');
   var lbImg = document.getElementById('lbImg');
-  if (lb && typeof lb.showModal === 'function') {
-    document.querySelectorAll('[data-zoom]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var img = btn.querySelector('img');
-        lbImg.src = img.currentSrc || img.src;
-        lbImg.alt = img.alt;
+  var lbCount = document.getElementById('lbCount');
+  var zoomImgs = Array.prototype.map.call(document.querySelectorAll('[data-zoom] img'), function (i) { return i; });
+  var lbIndex = 0;
+  if (lb && typeof lb.showModal === 'function' && zoomImgs.length) {
+    var lbShow = function (i) {
+      lbIndex = (i + zoomImgs.length) % zoomImgs.length;
+      var img = zoomImgs[lbIndex];
+      lbImg.src = img.currentSrc || img.src;
+      lbImg.alt = img.alt;
+      lbCount.textContent = (lbIndex + 1) + ' / ' + zoomImgs.length;
+    };
+    zoomImgs.forEach(function (img, i) {
+      img.parentElement.addEventListener('click', function () {
+        lbShow(i);
         lb.showModal();
         document.body.classList.add('lb-open');
       });
     });
     document.getElementById('lbClose').addEventListener('click', function () { lb.close(); });
-    lb.addEventListener('click', function (e) { if (e.target !== lbImg) lb.close(); });
+    document.getElementById('lbPrev').addEventListener('click', function () { lbShow(lbIndex - 1); });
+    document.getElementById('lbNext').addEventListener('click', function () { lbShow(lbIndex + 1); });
+    lb.addEventListener('click', function (e) { if (e.target !== lbImg && !e.target.closest('button')) lb.close(); });
     lb.addEventListener('close', function () { document.body.classList.remove('lb-open'); });
+    lb.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') lbShow(lbIndex - 1);
+      if (e.key === 'ArrowRight') lbShow(lbIndex + 1);
+    });
+    var touchX = null;
+    lb.addEventListener('touchstart', function (e) { touchX = e.changedTouches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchend', function (e) {
+      if (touchX === null) return;
+      var dx = e.changedTouches[0].clientX - touchX;
+      touchX = null;
+      if (Math.abs(dx) > 50) lbShow(lbIndex + (dx < 0 ? 1 : -1));
+    }, { passive: true });
   }
 
   // Форма заявки. Настоящую отправку на сервер подключим позже (Блок 9).

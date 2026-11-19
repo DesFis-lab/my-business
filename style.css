@@ -163,8 +163,8 @@ h1 { font-size: 52px; line-height: 1.1; margin: 28px 0 24px; }
 /* Просмотр фото на весь экран */
 .lightbox {
   position: fixed; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none;
-  margin: 0; padding: 56px 16px 16px; border: 0;
-  background: rgba(10,8,7,.94);
+  margin: 0; padding: 56px 16px 84px; border: 0; touch-action: pan-y;
+  background: rgba(10,8,7,.97);
   align-items: center; justify-content: center;
   cursor: zoom-out;
 }
@@ -175,7 +175,13 @@ h1 { font-size: 52px; line-height: 1.1; margin: 28px 0 24px; }
   border: 0; border-radius: 50%; background: var(--card); color: var(--on-dark);
   font: 400 32px/1 var(--body); cursor: pointer;
 }
-.lb-close:hover { background: var(--line-2); }
+.lb-close:hover, .lb-btn:hover { background: var(--line-2); }
+.lb-nav { position: absolute; left: 0; right: 0; bottom: 16px; display: flex; justify-content: center; align-items: center; gap: 16px; cursor: default; }
+.lb-btn {
+  width: 52px; height: 52px; border: 0; border-radius: 50%; background: var(--card); color: var(--on-dark);
+  font: 400 34px/1 var(--body); cursor: pointer; padding: 0 0 4px;
+}
+.lb-count { min-width: 56px; text-align: center; font-size: 16px; color: var(--muted); }
 body.lb-open { overflow: hidden; }
 .row3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 24px; }
 .review {
