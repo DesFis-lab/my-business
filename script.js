@@ -59,7 +59,7 @@ var PHONE_TEL = '+380000000000';
     updateParallax();
   }
 
-  // Закреплённая кнопка на телефоне прячется, когда на экране уже есть главная кнопка или форма.
+  // Закреплённая кнопка на телефоне видна всё время, кроме первого экрана (там своя кнопка) и самой формы.
   var sticky = document.querySelector('.sticky');
   if (sticky && 'IntersectionObserver' in window) {
     var seen = new Set();
@@ -69,7 +69,7 @@ var PHONE_TEL = '+380000000000';
       });
       sticky.classList.toggle('off', seen.size > 0);
     });
-    document.querySelectorAll('.hero-cta .btn, .after .btn, #order').forEach(function (el) { so.observe(el); });
+    document.querySelectorAll('.hero-cta .btn, #order').forEach(function (el) { so.observe(el); });
   }
 
   // Форма заявки. Настоящую отправку на сервер подключим позже (Блок 9).
