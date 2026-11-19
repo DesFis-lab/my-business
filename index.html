@@ -3,226 +3,231 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Layer Up — 3D-печать в Киеве</title>
-<style>
-  :root {
-    --bg: #0f1115;
-    --panel: #171a21;
-    --text: #f2f3f5;
-    --muted: #a6acb8;
-    --accent: #5b8cff;
-    --accent-text: #0f1115;
-    --line: #262b36;
+<title>Layer Up — 3D-печать в Киеве: от 1 штуки, за 1–3 дня</title>
+<meta name="description" content="Печатаем на 3D-принтере детали, подарки и прототипы по вашей модели или идее. Киев, от 1 штуки, за 1–3 дня. Печать от 3 ₴ за грамм, оценка модели бесплатно.">
+<link rel="canonical" href="https://desfis-lab.github.io/my-business/">
+
+<!-- Иконка вкладки -->
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<!-- Превью при отправке ссылки (Open Graph) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Layer Up">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Layer Up — 3D-печать в Киеве: от 1 штуки, за 1–3 дня">
+<meta property="og:description" content="Печатаем на 3D-принтере детали, подарки и прототипы по вашей модели или идее. Киев, от 1 штуки, за 1–3 дня. Печать от 3 ₴ за грамм, оценка модели бесплатно.">
+<meta property="og:url" content="https://desfis-lab.github.io/my-business/">
+<meta property="og:image" content="https://desfis-lab.github.io/my-business/images/og-preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Layer Up — от идеи до вещи за 1–3 дня. Белая напечатанная фигурка.">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Данные для поиска (schema.org). Только то, что есть на странице и в brief.md.
+     Когда появятся телефон, адрес и часы работы, добавить поля telephone, streetAddress, openingHours. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Layer Up",
+  "description": "Печатаем на 3D-принтере (FDM) детали, подарки и прототипы по вашей модели или идее. От 1 штуки, за 1–3 дня.",
+  "url": "https://desfis-lab.github.io/my-business/",
+  "image": "https://desfis-lab.github.io/my-business/images/og-preview.jpg",
+  "email": "qwerty@gmail.com",
+  "sameAs": ["https://t.me/layerup_kyiv"],
+  "address": { "@type": "PostalAddress", "addressLocality": "Киев", "addressCountry": "UA" },
+  "areaServed": [
+    { "@type": "City", "name": "Киев" },
+    { "@type": "Country", "name": "Украина" }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Услуги и цены",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Печать по своей модели (STL)" },
+        "priceSpecification": { "@type": "PriceSpecification", "minPrice": 3, "priceCurrency": "UAH", "unitText": "грамм" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Моделирование под заказ по фото/эскизу" },
+        "priceSpecification": { "@type": "PriceSpecification", "minPrice": 400, "priceCurrency": "UAH" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Прототип или запчасть" },
+        "priceSpecification": { "@type": "PriceSpecification", "minPrice": 400, "priceCurrency": "UAH" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Подарки и сувениры (брелки, фигурки, именные таблички)" },
+        "priceSpecification": { "@type": "PriceSpecification", "minPrice": 120, "priceCurrency": "UAH" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Консультация и оценка модели" },
+        "price": 0, "priceCurrency": "UAH" }
+    ]
   }
-
-  * { box-sizing: border-box; }
-
-  html, body {
-    margin: 0;
-    padding: 0;
-  }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-  }
-
-  main {
-    width: 100%;
-    max-width: 560px;
-    background: var(--panel);
-    border-radius: 20px;
-    padding: 40px 28px;
-    text-align: center;
-  }
-
-  h1 {
-    font-size: clamp(2.2rem, 8vw, 3rem);
-    margin: 0 0 8px;
-    letter-spacing: -0.02em;
-  }
-
-  .tagline {
-    font-size: 1.1rem;
-    color: var(--muted);
-    margin: 0 0 32px;
-    line-height: 1.5;
-  }
-
-  .points {
-    list-style: none;
-    margin: 0 0 36px;
-    padding: 0;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .points li {
-    font-size: 1.05rem;
-    line-height: 1.5;
-    padding-left: 28px;
-    position: relative;
-  }
-
-  .points li::before {
-    content: "—";
-    position: absolute;
-    left: 0;
-    color: var(--accent);
-  }
-
-  .services {
-    margin: 0 0 36px;
-    text-align: left;
-  }
-
-  .services h2 {
-    font-size: 1.5rem;
-    margin: 0 0 16px;
-    text-align: center;
-    letter-spacing: -0.01em;
-  }
-
-  .services-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .service {
-    background: var(--bg);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: 16px 18px;
-  }
-
-  .service-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 12px;
-  }
-
-  .service-name {
-    font-size: 1.05rem;
-    font-weight: 600;
-    line-height: 1.35;
-    margin: 0;
-  }
-
-  .service-price {
-    color: var(--accent);
-    font-weight: 600;
-    white-space: nowrap;
-  }
-
-  .service-desc {
-    color: var(--muted);
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin: 8px 0 0;
-  }
-
-  .cta {
-    display: inline-block;
-    background: var(--accent);
-    color: var(--accent-text);
-    font-size: 1.1rem;
-    font-weight: 600;
-    text-decoration: none;
-    padding: 16px 36px;
-    border-radius: 999px;
-    transition: opacity 0.2s ease;
-  }
-
-  .cta:active {
-    opacity: 0.8;
-  }
-
-  footer {
-    margin-top: 28px;
-    font-size: 0.85rem;
-    color: var(--muted);
-  }
-
-  @media (max-width: 420px) {
-    main {
-      padding: 32px 20px;
-    }
-
-    .service-head {
-      flex-direction: column;
-      gap: 4px;
-    }
-  }
-</style>
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700&family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
 </head>
 <body>
-  <main>
-    <h1>Layer Up</h1>
-    <p class="tagline">Печатаем на FDM-принтере детали, подарки и прототипы по вашей модели или идее в Киеве.</p>
 
-    <ul class="points">
-      <li>От 1 штуки — без минимальных партий, как у фабрик</li>
-      <li>Готово за 1–3 дня</li>
-      <li>Бесплатно поможем с моделью, если готового файла пока нет</li>
-    </ul>
+<!-- 1. Первый экран -->
+<header class="hero" id="top">
+  <div class="hero-art" data-parallax>
+    <img src="images/hero-figurka.webp" width="1000" height="1333" alt="Белая фигурка человека с большой головой, напечатанная на 3D-принтере" fetchpriority="high" decoding="async">
+  </div>
+  <nav class="nav wrap">
+    <a class="logo" href="#top">Layer<span>Up</span></a>
+    <div class="nav-links">
+      <a href="#services">Услуги и цены</a>
+      <a href="#works">Работы</a>
+      <a href="#faq">Вопросы</a>
+      <a href="#contacts">Контакты</a>
+    </div>
+    <a class="btn btn-accent btn-sm" href="#order">Получить расчёт</a>
+    <span class="city">Киев</span>
+  </nav>
+  <div class="hero-body wrap">
+    <div class="badge">3D-печать на FDM · Киев</div>
+    <h1>От идеи до вещи за 1–3 дня</h1>
+    <p class="lead">Печатаем детали, подарки и прототипы по вашей модели или идее. От 1 штуки.</p>
+    <div class="hero-cta">
+      <a class="btn btn-accent btn-lg" href="#order">Получить расчёт</a>
+      <span>Бесплатная оценка модели</span>
+    </div>
+    <div class="benefits">
+      <div><b>1–3 дня</b><span>готовый результат</span></div>
+      <div><b>от 1 шт.</b><span>берём мелкие заказы</span></div>
+      <div><b>бесплатно</b><span>поможем с моделью</span></div>
+    </div>
+  </div>
+</header>
 
-    <section class="services">
-      <h2>Услуги и цены</h2>
-      <ul class="services-list">
-        <li class="service">
-          <div class="service-head">
-            <h3 class="service-name">Печать по своей модели (STL)</h3>
-            <span class="service-price">от 3 ₴ за грамм</span>
-          </div>
-          <p class="service-desc">Загрузите готовую модель в формате STL — мы рассчитаем стоимость и напечатаем деталь за 1–3 дня.</p>
-        </li>
-        <li class="service">
-          <div class="service-head">
-            <h3 class="service-name">Моделирование под заказ по фото/эскизу</h3>
-            <span class="service-price">от 400 ₴</span>
-          </div>
-          <p class="service-desc">Нет готового файла? Присылайте фото, эскиз или просто описание — мы смоделируем всё с нуля.</p>
-        </li>
-        <li class="service">
-          <div class="service-head">
-            <h3 class="service-name">Прототип или запчасть</h3>
-            <span class="service-price">от 400 ₴</span>
-          </div>
-          <p class="service-desc">Прототип для проверки идеи или запчасть, которую больше нигде не найти, — быстро и точно по вашим параметрам.</p>
-        </li>
-        <li class="service">
-          <div class="service-head">
-            <h3 class="service-name">Подарки и сувениры (брелки, фигурки, именные таблички)</h3>
-            <span class="service-price">от 120 ₴</span>
-          </div>
-          <p class="service-desc">Персональные брелки, фигурки и именные таблички — подарок, который точно не будет повторяться.</p>
-        </li>
-        <li class="service">
-          <div class="service-head">
-            <h3 class="service-name">Консультация и оценка модели</h3>
-            <span class="service-price">бесплатно</span>
-          </div>
-          <p class="service-desc">Не уверены, подойдёт ли модель для печати? Пришлите файл или опишите идею — мы оценим и подскажем лучший вариант.</p>
-        </li>
-      </ul>
-    </section>
+<main>
+  <!-- 2. Услуги и цены -->
+  <section class="block wrap" id="services" data-reveal>
+    <h2>Печать от 3 ₴ за грамм, подарки от 120 ₴</h2>
+    <p class="sub">Цены указаны от.<span class="d-only"> Точный расчёт — по вашей модели или идее.</span></p>
+    <div class="services">
+      <div class="card" data-tilt>
+        <div class="card-head"><h3>Печать по своей модели (STL)</h3><div class="price">от 3 ₴ за грамм</div></div>
+        <p>Загрузите готовую модель в формате STL — мы рассчитаем стоимость и напечатаем деталь. Цена — от 3 ₴ за грамм, готовый результат у вас через 1–3 дня.</p>
+      </div>
+      <div class="card" data-tilt>
+        <div class="card-head"><h3>Моделирование под заказ по фото/эскизу</h3><div class="price">от 400 ₴</div></div>
+        <p>Нет готового файла? Присылайте фото, эскиз или просто описание — мы смоделируем всё с нуля. Стоимость моделирования — от 400 ₴.</p>
+      </div>
+      <div class="card" data-tilt>
+        <div class="card-head"><h3>Прототип или запчасть</h3><div class="price">от 400 ₴</div></div>
+        <p>Нужен прототип для проверки идеи или запчасть, которую больше нигде не найти? Напечатаем от 400 ₴ — быстро и точно по вашим параметрам.</p>
+      </div>
+      <div class="card" data-tilt>
+        <div class="card-head"><h3>Подарки и сувениры (брелки, фигурки, именные таблички)</h3><div class="price">от 120 ₴</div></div>
+        <p>Персональные брелки, фигурки и именные таблички — подарок, который точно не будет повторяться. Цена — от 120 ₴, изготовление — за 1–3 дня.</p>
+      </div>
+      <div class="card" data-tilt>
+        <div class="card-head"><h3>Консультация и оценка модели</h3><div class="price">бесплатно</div></div>
+        <p>Не уверены, подойдёт ли модель для печати, или не знаете, с чего начать? Пришлите файл или опишите идею — мы бесплатно оценим и подскажем лучший вариант.</p>
+      </div>
+    </div>
+    <div class="after"><a class="btn btn-light btn-lg" href="#order">Получить расчёт</a></div>
+  </section>
 
-    <a class="cta" href="https://t.me/layerup_kyiv">Оставить заявку</a>
+  <!-- 3. Доверие: работы и отзывы -->
+  <section class="block works wrap" id="works" data-reveal>
+    <h2>Посмотрите, что мы уже напечатали</h2>
+    <div class="photos">
+      <figure class="ph"><img src="images/work-pizza-korobka.webp" width="800" height="1067" alt="Пицца-головоломка в напечатанной коробке" loading="lazy" decoding="async"></figure>
+      <figure class="ph"><img src="images/work-pizza-kryshka.webp" width="800" height="1067" alt="Крышка коробки с многоцветным рисунком пиццы" loading="lazy" decoding="async"></figure>
+      <figure class="ph"><img src="images/work-ovoshchi.webp" width="800" height="1067" alt="Набор овощей на подставке, напечатанный на 3D-принтере" loading="lazy" decoding="async"></figure>
+      <figure class="ph"><img src="images/work-podstavka.webp" width="800" height="1067" alt="Подставка с кукурузой, морковью, редисом и брокколи" loading="lazy" decoding="async"></figure>
+    </div>
+    <div class="row3">
+      <div class="review placeholder" data-tilt>[отзыв клиента 1 — уточнить]</div>
+      <div class="review placeholder" data-tilt>[отзыв клиента 2 — уточнить]</div>
+      <div class="review placeholder" data-tilt>[отзыв клиента 3 — уточнить]</div>
+    </div>
+    <div class="row3">
+      <div class="stat placeholder">[цифра 1 — уточнить]</div>
+      <div class="stat placeholder">[цифра 2 — уточнить]</div>
+      <div class="stat placeholder">[цифра 3 — уточнить]</div>
+    </div>
+  </section>
 
-    <footer>Киев · самовывоз или доставка по Украине</footer>
-  </main>
+  <!-- 4. Частые вопросы -->
+  <section class="block faq wrap" id="faq" data-reveal>
+    <h2>Коротко о сроках, цене и доставке</h2>
+    <div>
+      <details><summary>Сколько времени занимает печать?</summary><p>Обычно 1–3 дня.</p></details>
+      <details><summary>Можно заказать одну штуку?</summary><p>Да, печатаем от 1 штуки. Мелкие заказы берём.</p></details>
+      <details><summary>Что прислать, чтобы получить расчёт?</summary><p>Файл STL, фото, эскиз или описание идеи.</p></details>
+      <details><summary>У меня нет готового файла. Что делать?</summary><p>Присылайте фото, эскиз или описание — мы смоделируем деталь с нуля, стоимость моделирования от 400 ₴. Подскажем и поможем с моделью бесплатно.</p></details>
+      <details><summary>Сколько стоит печать?</summary><p>Печать по вашей модели (STL) — от 3 ₴ за грамм, подарки и сувениры — от 120 ₴, прототип или запчасть — от 400 ₴. Точный расчёт — по вашей модели или идее.</p></details>
+      <details><summary>Нужно ли платить за консультацию?</summary><p>Нет, консультация и оценка модели бесплатно. Пришлите файл или опишите идею — мы оценим и подскажем лучший вариант.</p></details>
+      <details><summary>Как получить заказ?</summary><p>Самовывоз по Киеву или отправка по всей Украине: Новая почта, Укрпочта, Meest Express.</p></details>
+    </div>
+  </section>
+
+  <!-- 5. Контакты и карта -->
+  <section class="block contacts wrap" id="contacts" data-reveal>
+    <h2>Заберите заказ в Киеве или получите по Украине</h2>
+    <div class="contacts-grid">
+      <div>
+        <div class="label">Адрес</div>
+        <div class="val">Самовывоз по Киеву</div>
+        <div class="todo">[точный адрес — уточнить]</div>
+      </div>
+      <div>
+        <div class="label">Часы работы</div>
+        <div class="todo">[часы работы — уточнить]</div>
+      </div>
+      <div>
+        <div class="label">Связь</div>
+        <div class="val"><a href="https://t.me/layerup_kyiv">Telegram @layerup_kyiv</a></div>
+        <div class="val"><a href="mailto:qwerty@gmail.com">qwerty@gmail.com</a></div>
+        <div class="todo" data-phone-contact>[телефон — уточнить]</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Заявка -->
+  <section class="order wrap" id="order" data-reveal>
+    <div class="order-text">
+      <h2>Получите расчёт по вашей модели или идее</h2>
+      <p class="lead">Файл STL, фото, эскиз или описание.<span class="d-only"> Рассчитаем стоимость и подскажем лучший вариант.</span></p>
+      <div class="links">
+        <a class="btn btn-ghost" href="https://t.me/layerup_kyiv"><span class="d-only">Написать в </span>Telegram</a>
+        <a class="btn btn-ghost" href="mailto:qwerty@gmail.com">Email</a>
+      </div>
+    </div>
+    <div class="form-box">
+      <form id="orderForm" novalidate>
+        <div class="field">
+          <label for="f-name">Ваше имя</label>
+          <input id="f-name" type="text" name="name" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="f-phone">Телефон</label>
+          <input id="f-phone" type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+380" required>
+        </div>
+        <div class="field">
+          <label for="f-comment">Комментарий</label>
+          <textarea id="f-comment" name="comment" placeholder="Опишите идею (необязательно)"></textarea>
+        </div>
+        <button class="btn btn-accent" type="submit">Отправить</button>
+      </form>
+      <div class="done" id="orderDone" role="status" tabindex="-1" hidden>
+        <h3>Спасибо, заявка почти готова</h3>
+        <p>Отправку с сайта мы скоро подключим. А пока позвоните нам — сразу всё посчитаем.</p>
+        <div class="phone" data-phone-text>[телефон — уточнить]</div>
+        <a class="btn btn-accent" data-phone-link href="tel:+380000000000">Позвонить</a>
+        <button class="link-btn" type="button" id="orderBack">Изменить заявку</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- 7. Подвал -->
+<footer class="wrap"><span>Layer Up · Киев</span><span>3D-печать на FDM-принтере</span></footer>
+
+<div class="sticky"><a class="btn btn-accent" href="#order">Получить расчёт</a></div>
+
 </body>
 </html>
