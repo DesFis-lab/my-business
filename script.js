@@ -89,6 +89,7 @@ var PHONE_TEL = '+380000000000';
       a.href = 'tel:' + PHONE_TEL;
       a.textContent = PHONE_TEXT;
       el.className = 'val';
+      el.hidden = false;
       el.textContent = '';
       el.appendChild(a);
     });
