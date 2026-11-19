@@ -137,10 +137,10 @@
   <section class="block works wrap" id="works" data-reveal>
     <h2>Посмотрите, что мы уже напечатали</h2>
     <div class="photos">
-      <figure class="ph"><img src="images/work-pizza-korobka.webp" width="800" height="1067" alt="Пицца-головоломка в напечатанной коробке" loading="lazy" decoding="async"></figure>
-      <figure class="ph"><img src="images/work-pizza-kryshka.webp" width="800" height="1067" alt="Крышка коробки с многоцветным рисунком пиццы" loading="lazy" decoding="async"></figure>
-      <figure class="ph"><img src="images/work-ovoshchi.webp" width="800" height="1067" alt="Набор овощей на подставке, напечатанный на 3D-принтере" loading="lazy" decoding="async"></figure>
-      <figure class="ph"><img src="images/work-podstavka.webp" width="800" height="1067" alt="Подставка с кукурузой, морковью, редисом и брокколи" loading="lazy" decoding="async"></figure>
+      <figure class="ph"><button class="ph-btn" type="button" data-zoom aria-label="Открыть фото: Пицца-головоломка в напечатанной коробке"><img src="images/work-pizza-korobka.webp" width="800" height="1067" alt="Пицца-головоломка в напечатанной коробке" loading="lazy" decoding="async"></button></figure>
+      <figure class="ph"><button class="ph-btn" type="button" data-zoom aria-label="Открыть фото: Крышка коробки с многоцветным рисунком пиццы"><img src="images/work-pizza-kryshka.webp" width="800" height="1067" alt="Крышка коробки с многоцветным рисунком пиццы" loading="lazy" decoding="async"></button></figure>
+      <figure class="ph"><button class="ph-btn" type="button" data-zoom aria-label="Открыть фото: Набор овощей на подставке, напечатанный на 3D-принтере"><img src="images/work-ovoshchi.webp" width="800" height="1067" alt="Набор овощей на подставке, напечатанный на 3D-принтере" loading="lazy" decoding="async"></button></figure>
+      <figure class="ph"><button class="ph-btn" type="button" data-zoom aria-label="Открыть фото: Подставка с кукурузой, морковью, редисом и брокколи"><img src="images/work-podstavka.webp" width="800" height="1067" alt="Подставка с кукурузой, морковью, редисом и брокколи" loading="lazy" decoding="async"></button></figure>
     </div>
     <!-- Отзывы и цифры скрыты, пока нет настоящих (hidden). Появятся, когда владелец пришлёт данные:
          уберите hidden и замените текст. -->
@@ -237,6 +237,11 @@
 
 <!-- 7. Подвал -->
 <footer class="wrap"><span>Layer Up · Киев</span><span>3D-печать на FDM-принтере</span></footer>
+
+<dialog class="lightbox" id="lightbox" aria-label="Фото работы">
+  <button class="lb-close" type="button" id="lbClose" aria-label="Закрыть фото">&times;</button>
+  <img id="lbImg" src="" alt="">
+</dialog>
 
 <div class="sticky"><a class="btn btn-accent" href="#order">Получить расчёт</a></div>
 

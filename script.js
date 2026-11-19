@@ -77,6 +77,24 @@ if (!location.hash) window.scrollTo(0, 0);
     document.querySelectorAll('.hero-cta .btn, #order').forEach(function (el) { so.observe(el); });
   }
 
+  // Просмотр фото работ: нажали на фото — открылось крупно; крестик, фон или Esc — закрыть.
+  var lb = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lbImg');
+  if (lb && typeof lb.showModal === 'function') {
+    document.querySelectorAll('[data-zoom]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var img = btn.querySelector('img');
+        lbImg.src = img.currentSrc || img.src;
+        lbImg.alt = img.alt;
+        lb.showModal();
+        document.body.classList.add('lb-open');
+      });
+    });
+    document.getElementById('lbClose').addEventListener('click', function () { lb.close(); });
+    lb.addEventListener('click', function (e) { if (e.target !== lbImg) lb.close(); });
+    lb.addEventListener('close', function () { document.body.classList.remove('lb-open'); });
+  }
+
   // Форма заявки. Настоящую отправку на сервер подключим позже (Блок 9).
   // Пока заявка уходит через Telegram: открываем чат с готовым текстом,
   // клиенту остаётся нажать «Отправить». Запасные пути — email и (когда будет номер) звонок.
