@@ -121,6 +121,8 @@ h1 { font-size: 52px; line-height: 1.1; margin: 28px 0 24px; }
 
 /* ---------- Общие блоки ---------- */
 .block { padding-top: 112px; padding-bottom: 112px; }
+.block-head { display: flex; justify-content: space-between; align-items: center; gap: 32px; }
+.block-head .btn { flex: none; }
 .sub { font-size: 20px; color: var(--dim); margin: 12px 0 48px; }
 
 /* ---------- 2. Услуги и цены ---------- */
